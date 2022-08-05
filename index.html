@@ -1,11 +1,39 @@
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <title>My Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+<section>
+    <div class="container">
+        <div id="display"></div>
+        <div class="buttons">
+            <div class="button" onclick="takeInput(event)">C</div>
+            <div class="button" onclick="takeInput(event)">/</div>
+            <div class="button" onclick="takeInput(event)">*</div>
+            <div class="button" onclick="takeInput(event)">&larr;</div>
+            <div class="button" onclick="takeInput(event)">7</div>
+            <div class="button" onclick="takeInput(event)">8</div>
+            <div class="button" onclick="takeInput(event)">9</div>
+            <div class="button" onclick="takeInput(event)">-</div>
+            <div class="button" onclick="takeInput(event)">4</div>
+            <div class="button" onclick="takeInput(event)">5</div>
+            <div class="button" onclick="takeInput(event)">6</div>
+            <div class="button" onclick="takeInput(event)">+</div>
+            <div class="button" onclick="takeInput(event)">1</div>
+            <div class="button" onclick="takeInput(event)">2</div>
+            <div class="button" onclick="takeInput(event)">3</div>
+            <div class="button" onclick="takeInput(event)">.</div>
+            <div class="button" onclick="takeInput(event)">(</div>
+            <div class="button" onclick="takeInput(event)">0</div>
+            <div class="button" onclick="takeInput(event)">)</div>
+            <div id="equal" class="button" onclick="takeInput(event)">=</div>
+        </div>
+    </div>
+</section>
+<script src="index.js"></script>
 </body>
 </html>
