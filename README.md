@@ -1,15 +1,13 @@
-<table class="summary-table">
-  <thead>
-    <tr>
-      <th>As Of Date</th>
-      <th>Client ID & Name</th>
-      <th>Plans</th>
-      <th>Summary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td colspan="4">Client ID and plans are not added.</td>
-    </tr>
-  </tbody>
-</table>
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.summary-table th, .summary-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+.summary-table th {
+  background-color: #f4f4f4;
+}
