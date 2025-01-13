@@ -1,10 +1,23 @@
-<div class="header">
-  <img src="assets/vanguard-logo.png" alt="Vanguard" class="logo">
-  <nav>
-    <ul>
-      <li><a routerLink="/all-in-fee">All-In Fee</a></li>
-      <li><a routerLink="/my-reports">My Reports</a></li>
-      <li><a routerLink="/all-reports">All Reports</a></li>
-    </ul>
-  </nav>
-</div>
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+}
+.logo {
+  height: 50px;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+}
+nav ul li {
+  margin-right: 20px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
