@@ -1,26 +1,28 @@
-<form class="form">
-  <div class="form-group">
-    <label for="asOfDate">As Of Date</label>
-    <input type="date" id="asOfDate" required>
-  </div>
-  <div class="form-group">
-    <label for="clientId">Client ID and Name</label>
-    <input type="text" id="clientId" required>
-  </div>
-  <div class="form-group">
-    <label for="plans">Select one or more plans</label>
-    <select id="plans" multiple required>
-      <option>Plan 1</option>
-      <option>Plan 2</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label>Client & Plan Summary Selections</label>
-    <div>
-      <input type="radio" name="summary" value="plan-summary" checked> Plan Summary
-      <input type="radio" name="summary" value="client-summary"> Client Summary
-      <input type="radio" name="summary" value="client-plan-summary"> Client & Plan Summary
-    </div>
-  </div>
-  <button type="submit" class="submit-btn">Submit</button>
-</form>
+.form {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+input, select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.submit-btn {
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
