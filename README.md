@@ -1,23 +1,8 @@
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-  padding: 10px 20px;
-}
-.logo {
-  height: 50px;
-}
-nav ul {
-  display: flex;
-  list-style: none;
-}
-nav ul li {
-  margin-right: 20px;
-}
-nav ul li a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-}
+<div class="sidebar">
+  <ul>
+    <li>As Of Date</li>
+    <li>Client ID and Name</li>
+    <li>Select one or more plans</li>
+    <li>Client & Plan Summary Selections</li>
+  </ul>
+</div>
