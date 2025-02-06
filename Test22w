@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Design</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="card">
+        <p><strong>Assets under management:</strong> $X,XXX,XXX</p>
+        <p><strong>Number of Participants:</strong> XXX</p>
+        <button class="view-plan">View Plan</button>
+    </div>
+</body>
+</html>
