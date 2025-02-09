@@ -1,0 +1,60 @@
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            // Disable CSRF as the API is stateless
+            .csrf(csrf -> csrf.disable())
+            // Set session management to stateless
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            // Define authorization rules
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    new AntPathRequestMatcher("/actuator/**"),
+                    new AntPathRequestMatcher("/iis/healthcheck/**"),
+                    new AntPathRequestMatcher("/swagger-ui/**"),
+                    new AntPathRequestMatcher("/iis/swagger/**")
+                ).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/iis/**")).fullyAuthenticated()
+            )
+            // Use 403 Forbidden when authentication fails
+            .exceptionHandling(ex -> ex.authenticationEntryPoint(new Http403ForbiddenEntryPoint()));
+
+        return http.build();
+    }
+
+    // Registration for F5Filter
+    @Bean
+    public FilterRegistrationBean<F5Filter> f5Filter() {
+        FilterRegistrationBean<F5Filter> registrationBean = new FilterRegistrationBean<>(new F5Filter());
+        registrationBean.setName("F5Filter");
+        // Order can be adjusted as needed
+        registrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE + 3);
+        registrationBean.addUrlPatterns("/*");
+        return registrationBean;
+    }
+
+    // Registration for NIFilter
+    @Bean
+    public FilterRegistrationBean<NIFilter> niFilter() {
+        FilterRegistrationBean<NIFilter> registrationBean = new FilterRegistrationBean<>(new NIFilter());
+        registrationBean.setName("NIFilter");
+        // Order can be adjusted based on your requirements
+        registrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE + 4);
+        registrationBean.addUrlPatterns("/*");
+        return registrationBean;
+    }
+}
