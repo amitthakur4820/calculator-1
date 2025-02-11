@@ -1,0 +1,33 @@
+.button-overlap-container {
+  position: relative; /* Sets up a reference for absolute positioning */
+  width: 250px;       /* Adjust as needed */
+  height: 50px;       /* Adjust as needed */
+  margin: 50px auto;  /* Center container on the page */
+  background: #f0f0f0; /* Optional: background to visualize container */
+}
+
+/* Base styles for both buttons */
+.overlap-btn {
+  position: absolute;      /* Allows buttons to be positioned on top of each other */
+  top: 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Style for the first button */
+.btn1 {
+  left: 0;
+  background-color: #007bff;
+  color: #fff;
+  z-index: 1; /* Lower stacking order */
+}
+
+/* Style for the second button */
+.btn2 {
+  left: 30px;  /* Moves button 2 to the right; adjust to increase/decrease overlap */
+  background-color: #ffc107;
+  color: #000;
+  z-index: 2; /* Higher stacking order so it appears above the first button */
+}
