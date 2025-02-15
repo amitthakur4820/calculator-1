@@ -1,0 +1,32 @@
+<div class="nav-container">
+  <div class="tabs">
+    <button 
+      class="tab-button" 
+      [class.active]="selectedTab === 'persona'" 
+      (click)="selectTab('persona')">
+      View by persona
+    </button>
+    <button 
+      class="tab-button" 
+      [class.active]="selectedTab === 'feature'" 
+      (click)="selectTab('feature')">
+      View by feature
+    </button>
+  </div>
+
+  <div class="tab-content">
+    <ng-container *ngIf="selectedTab === 'persona'">
+      <ng-template #personaView>
+        <p>Persona-based content goes here...</p>
+      </ng-template>
+      <ng-container *ngTemplateOutlet="personaView"></ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="selectedTab === 'feature'">
+      <ng-template #featureView>
+        <p>Feature-based content goes here...</p>
+      </ng-template>
+      <ng-container *ngTemplateOutlet="featureView"></ng-container>
+    </ng-container>
+  </div>
+</div>
