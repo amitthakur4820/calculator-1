@@ -8,12 +8,12 @@ import { AppComponent } from './app.component';
 bootstrapApplication(AppComponent);
 
 // store.ts
-import { createStore } from '@tanstack/store';
+import { Store } from '@tanstack/store';
 
-export const store = createStore(() => ({
+export const store = new Store({
   profit: 10000,
   loss: 5000,
-}));
+});
 
 export function updateProfit(value: number) {
   store.setState((state) => ({ ...state, profit: state.profit + value }));
