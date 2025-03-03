@@ -1,20 +1,11 @@
 // Install dependencies before running the project:
-// npm install @angular/core @tanstack/store chart.js ngx-charts
+// npm install @angular/core @tanstack/store chart.js
 
-// app.module.ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+// main.ts (entry point for standalone Angular app)
+import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './sidebar.component';
-import { DashboardComponent } from './dashboard.component';
-import { NgChartsModule } from 'ng2-charts';
 
-@NgModule({
-  declarations: [AppComponent, SidebarComponent, DashboardComponent],
-  imports: [BrowserModule, NgChartsModule],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
+bootstrapApplication(AppComponent);
 
 // store.ts
 import { createStore } from '@tanstack/store';
@@ -37,6 +28,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
+  standalone: true,
   template: `
     <nav>
       <ul>
@@ -54,28 +46,31 @@ import { store } from './store';
 
 @Component({
   selector: 'app-dashboard',
+  standalone: true,
   template: `
     <h1>Dashboard</h1>
     <p>Profit: {{ store.state.profit }}</p>
     <p>Loss: {{ store.state.loss }}</p>
     <button (click)="updateProfit(1000)">Increase Profit</button>
     <button (click)="updateLoss(500)">Increase Loss</button>
-    <canvas baseChart [data]="chartData" [labels]="chartLabels" chartType="pie"></canvas>
+    <canvas id="barChart"></canvas>
   `,
 })
 export class DashboardComponent {
   store = store;
-  chartData = [store.state.profit, store.state.loss];
-  chartLabels = ['Profit', 'Loss'];
   updateProfit(value: number) { store.setState((s) => ({ ...s, profit: s.profit + value })); }
   updateLoss(value: number) { store.setState((s) => ({ ...s, loss: s.loss + value })); }
 }
 
 // app.component.ts
 import { Component } from '@angular/core';
+import { SidebarComponent } from './sidebar.component';
+import { DashboardComponent } from './dashboard.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [SidebarComponent, DashboardComponent],
   template: `
     <div style="display: flex">
       <app-sidebar></app-sidebar>
